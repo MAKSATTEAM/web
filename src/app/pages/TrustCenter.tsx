@@ -62,10 +62,10 @@ export function TrustCenter() {
       icon: AlertCircle,
       title: "Incident & Contact",
       items: [
-        { label: "Security Incident Contact", value: "security@nexus.example" },
+        { label: "Security Incident Contact", value: "info@maksat.pro" },
         { label: "Data Breach Notification", value: "72h to affected parties + regulators" },
-        { label: "Whistleblower Channel", value: "ethics@nexus.example (external review)" },
-        { label: "DPO Contact", value: "dpo@nexus.example" },
+        { label: "Whistleblower Channel", value: "info@maksat.pro (external review)" },
+        { label: "DPO Contact", value: "info@maksat.pro" },
         { label: "Insurance", value: "Cyber liability + E&O coverage" }
       ]
     }
@@ -154,10 +154,10 @@ export function TrustCenter() {
             For detailed security questionnaires, SOC 2 reports (when available), or custom compliance documentation, contact our compliance team.
           </p>
           <a 
-            href="mailto:compliance@nexus.example" 
+            href="mailto:info@maksat.pro" 
             className="text-[14px] text-foreground/80 hover:text-foreground font-light transition-colors"
           >
-            compliance@nexus.example →
+            info@maksat.pro →
           </a>
         </motion.div>
 
@@ -165,7 +165,7 @@ export function TrustCenter() {
         <div className="mt-12 text-center">
           <p className="text-[11px] text-muted-foreground/40 font-light leading-relaxed max-w-3xl mx-auto">
             This Trust Center is for informational purposes. Actual contractual obligations are defined in executed agreements (MSA, DPA, BAA). 
-            Nexus reserves the right to update these standards; material changes will be communicated to active clients.
+            info@maksat.pro reserves the right to update these standards; material changes will be communicated to active clients.
           </p>
         </div>
       </div>

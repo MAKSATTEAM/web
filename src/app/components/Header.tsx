@@ -21,7 +21,7 @@ export function Header() {
           {/* Left: Logo + Descriptor */}
           <Link to="/" className="flex items-baseline gap-3 group">
             <span className="text-[17px] tracking-tight text-foreground/95 transition-colors group-hover:text-foreground">
-              Nexus
+              maksat.PRO
             </span>
             <span className="text-[13px] text-muted-foreground/70 font-light">
               Advisory · Fund · Build

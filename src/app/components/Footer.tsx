@@ -8,7 +8,7 @@ export function Footer() {
           {/* Left: Wordmark */}
           <div className="flex items-baseline gap-3">
             <span className="text-[15px] tracking-tight text-foreground/60">
-              Nexus
+              maksat.PRO
             </span>
             <span className="text-[12px] text-muted-foreground/50 font-light">
               Investment-grade operations

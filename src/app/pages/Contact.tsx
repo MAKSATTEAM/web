@@ -37,10 +37,10 @@ export function Contact() {
               Email
             </h3>
             <a 
-              href="mailto:hello@nexus.example" 
+              href="mailto:info@maksat.pro" 
               className="text-[14px] text-muted-foreground/70 hover:text-foreground/90 font-light transition-colors"
             >
-              hello@nexus.example
+              info@maksat.pro
             </a>
           </motion.div>
 
@@ -57,7 +57,7 @@ export function Contact() {
               Call
             </h3>
             <p className="text-[14px] text-muted-foreground/70 font-light">
-              +971 (0) 4 XXX XXXX
+              +7 (960) 055 1842
             </p>
           </motion.div>
 
@@ -74,7 +74,7 @@ export function Contact() {
               Office
             </h3>
             <p className="text-[14px] text-muted-foreground/70 font-light">
-              Dubai, UAE
+              Cupertino, US
             </p>
           </motion.div>
         </div>

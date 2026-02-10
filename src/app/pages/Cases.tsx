@@ -24,7 +24,7 @@ export function Cases() {
       client: "Confidential FinTech",
       description: "Investment-grade tech assessment for Series C → IPO readiness.",
       metrics: ["127-page report", "12 critical fixes", "Audit-ready"],
-      geography: "Egypt → US"
+      geography: "Qatar → US"
     },
     {
       id: 3,

@@ -4,42 +4,42 @@ import { PillButton } from "../components/PillButton";
 export function Fund() {
   const thesisPoints = [
     {
+      title: "SportsTech",
+      description: "Solutions for Clubs, Leagues and end clients addressing US/MENA/CIS digitization with proven PMF."
+    },
+    {
+      title: "WelnessTech",
+      description: "Industrial efficiency, wellbeing management, and wareable quipments integration with hard metrics."
+    },
+    {
       title: "Regulated Infrastructure",
       description: "Fintech, regtech, and cross-border payment rails requiring compliance-first architecture."
-    },
-    {
-      title: "B2B SaaS in Emerging Markets",
-      description: "Enterprise software addressing MENA/CEE digitization with proven PMF."
-    },
-    {
-      title: "Climate & Resource Tech",
-      description: "Industrial efficiency, water management, and renewable integration with hard metrics."
     }
   ];
 
   const portfolio = [
     { 
-      name: "Confidential Fintech A", 
-      sector: "Cross-border payments", 
+      name: "Confidential Regulated Infrastructure", 
+      sector: "Cross-border payments for athlets to take part of competitions", 
       geography: "UAE → EU",
       status: "Active"
     },
     { 
-      name: "Confidential RegTech B", 
+      name: "Confidential RegTech for fans", 
       sector: "Compliance automation", 
       geography: "MENA",
       status: "Active"
     },
     { 
-      name: "Confidential ClimaTech C", 
+      name: "Confidential WellnessTech Project", 
       sector: "Industrial efficiency", 
       geography: "KSA",
       status: "Pipeline"
     },
     { 
-      name: "Confidential SaaS D", 
-      sector: "Enterprise operations", 
-      geography: "Egypt → GCC",
+      name: "Confidential SaaS", 
+      sector: "Enterprise operations for Sports Clubs", 
+      geography: "Qatar → GCC",
       status: "Pipeline"
     }
   ];

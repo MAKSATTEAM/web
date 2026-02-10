@@ -143,9 +143,9 @@ export function Advisory() {
           
           <div className="grid grid-cols-4 gap-6">
             {[
-              { region: "MENA", priority: "Primary", description: "UAE, KSA, Egypt" },
-              { region: "United States", priority: "Secondary", description: "East Coast focus" },
-              { region: "European Union", priority: "Tertiary", description: "Select markets" },
+              { region: "MENA", priority: "Primary", description: "UAE, KSA, Qatar" },
+              { region: "United States", priority: "Secondary", description: "West Coast focus" },
+              { region: "EU", priority: "Tertiary", description: "Select markets" },
               { region: "Russia", priority: "Select", description: "On request" }
             ].map((geo) => (
               <div 
