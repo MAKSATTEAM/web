@@ -10,6 +10,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
       - name: Setup SSH
         run: |
           mkdir -p ~/.ssh
@@ -26,6 +31,6 @@ jobs:
         run: |
           rsync -az --delete dist/ web@77.233.212.108:/srv/corpweb/site/dist/
 
-      - name: Publish to Nginx dir
+      - name: Publish
         run: |
-          ssh web@77.233.212.108 "sudo rm -rf /var/www/corpweb/* && sudo cp -r /srv/corpweb/site/dist/* /var/www/corpweb/ && sudo chown -R web:web /var/www/corpweb"
+          ssh web@77.233.212.108 "sudo -n /usr/local/bin/publish_corpweb"
