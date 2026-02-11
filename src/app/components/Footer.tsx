@@ -3,7 +3,7 @@ import { Link } from "react-router";
 export function Footer() {
   return (
     <footer className="border-t border-white/5 mt-32">
-      <div className="max-w-[1440px] mx-auto px-6 sm:px-8 lg:px-12 py-10 sm:py-12">
+      <div className="max-w-[1200px] mx-auto px-6 sm:px-8 lg:px-12 py-10 sm:py-12">
         <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
           {/* Left: Wordmark */}
           <div className="flex items-baseline gap-3">
