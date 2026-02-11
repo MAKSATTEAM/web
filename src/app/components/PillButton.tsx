@@ -7,6 +7,7 @@ interface PillButtonProps {
   href?: string;
   onClick?: () => void;
   icon?: ReactNode;
+  className?: string;
 }
 
 export function PillButton({ 
@@ -14,9 +15,10 @@ export function PillButton({
   variant = "primary", 
   href, 
   onClick,
-  icon 
+  icon,
+  className
 }: PillButtonProps) {
-  const baseClasses = "inline-flex items-center gap-2.5 px-6 py-3 rounded-full text-[14px] font-light tracking-tight transition-all duration-300";
+  const baseClasses = "inline-flex items-center gap-2.5 px-5 py-2.5 sm:px-6 sm:py-3 rounded-full text-[13px] sm:text-[14px] font-light tracking-tight transition-all duration-300";
   
   const variantClasses = {
     primary: "bg-white/10 text-foreground/95 border border-white/10 hover:bg-white/15 hover:border-white/20 backdrop-blur-sm shadow-[0_2px_12px_rgba(0,0,0,0.3)]",
@@ -41,7 +43,7 @@ export function PillButton({
     <Component
       whileHover={{ scale: 1.02 }}
       whileTap={{ scale: 0.98 }}
-      className={`${baseClasses} ${variantClasses[variant]}`}
+      className={`${baseClasses} ${variantClasses[variant]} ${className ?? ""}`}
       onClick={onClick}
     >
       {content}
