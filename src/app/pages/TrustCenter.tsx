@@ -1,5 +1,6 @@
 import { motion } from "motion/react";
 import { Shield, Database, Lock, FileCheck, Scale, AlertCircle } from "lucide-react";
+import { DiagonalShards } from "../components/DiagonalShards";
 
 export function TrustCenter() {
   const sections = [
@@ -72,33 +73,38 @@ export function TrustCenter() {
   ];
 
   return (
-    <div className="pt-32 pb-24 px-12">
-      <div className="max-w-[1200px] mx-auto">
+    <div className="pt-24 sm:pt-28 lg:pt-32 pb-16 sm:pb-20 lg:pb-24 px-6 sm:px-8 lg:px-12">
+      <div className="max-w-[1440px] mx-auto">
         {/* Hero */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="mb-24"
+          className="mb-16 sm:mb-20 lg:mb-24"
         >
-          <h1 className="text-[64px] font-light tracking-tight text-foreground/95 mb-6 leading-tight max-w-4xl">
-            Trust Center
-          </h1>
-          
-          <p className="text-[17px] text-muted-foreground/70 font-light leading-relaxed max-w-2xl mb-8">
-            Transparent documentation of our operational, security, and compliance standards. Updated quarterly.
-          </p>
+          <div className="relative rounded-[28px] sm:rounded-[32px] bg-gradient-to-br from-[#1a1d26]/70 via-[#12141a]/85 to-[#1a1d26]/70 border border-white/[0.06] backdrop-blur-2xl overflow-hidden">
+            <DiagonalShards />
+            <div className="relative px-6 sm:px-10 lg:px-12 py-10 sm:py-12">
+              <h1 className="text-[36px] sm:text-[48px] lg:text-[64px] font-light tracking-tight text-foreground/95 mb-5 sm:mb-6 leading-tight max-w-4xl">
+                Trust Center
+              </h1>
+              
+              <p className="text-[14px] sm:text-[16px] lg:text-[17px] text-muted-foreground/70 font-light leading-relaxed max-w-2xl mb-8">
+                Transparent documentation of our operational, security, and compliance standards. Updated quarterly.
+              </p>
 
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20">
-            <div className="w-1.5 h-1.5 rounded-full bg-blue-400" />
-            <span className="text-[12px] text-blue-400/90 font-light">
-              Last updated: February 2026
-            </span>
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20">
+                <div className="w-1.5 h-1.5 rounded-full bg-blue-400" />
+                <span className="text-[12px] text-blue-400/90 font-light">
+                  Last updated: February 2026
+                </span>
+              </div>
+            </div>
           </div>
         </motion.div>
 
         {/* Spec Sections */}
-        <div className="space-y-12">
+        <div className="space-y-8 sm:space-y-12">
           {sections.map((section, sectionIndex) => (
             <motion.section
               key={section.title}
@@ -106,14 +112,14 @@ export function TrustCenter() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: sectionIndex * 0.05 }}
-              className="rounded-[28px] bg-gradient-to-br from-[#1a1d26]/40 via-[#12141a]/50 to-[#1a1d26]/40 border border-white/[0.06] p-10"
+              className="rounded-[26px] sm:rounded-[28px] bg-gradient-to-br from-[#1a1d26]/40 via-[#12141a]/50 to-[#1a1d26]/40 border border-white/[0.06] p-6 sm:p-10"
             >
               {/* Section Header */}
               <div className="flex items-center gap-4 mb-8">
                 <div className="w-10 h-10 rounded-full bg-white/[0.04] border border-white/[0.08] flex items-center justify-center">
                   <section.icon className="w-5 h-5 text-foreground/60" strokeWidth={1.5} />
                 </div>
-                <h2 className="text-[32px] font-light tracking-tight text-foreground/90">
+                <h2 className="text-[22px] sm:text-[28px] lg:text-[32px] font-light tracking-tight text-foreground/90">
                   {section.title}
                 </h2>
               </div>
@@ -123,14 +129,14 @@ export function TrustCenter() {
                 {section.items.map((item, itemIndex) => (
                   <div 
                     key={item.label}
-                    className={`grid grid-cols-2 gap-12 py-5 ${
+                    className={`grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-6 md:gap-12 py-5 ${
                       itemIndex !== section.items.length - 1 ? 'border-b border-white/[0.04]' : ''
                     }`}
                   >
-                    <div className="text-[15px] text-muted-foreground/70 font-light">
+                    <div className="text-[13px] sm:text-[14px] lg:text-[15px] text-muted-foreground/70 font-light">
                       {item.label}
                     </div>
-                    <div className="text-[15px] text-foreground/85 font-light">
+                    <div className="text-[13px] sm:text-[14px] lg:text-[15px] text-foreground/85 font-light">
                       {item.value}
                     </div>
                   </div>
@@ -145,25 +151,25 @@ export function TrustCenter() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="mt-16 p-8 rounded-[24px] bg-white/[0.02] border border-white/[0.04]"
+          className="mt-12 sm:mt-16 p-6 sm:p-8 rounded-[22px] sm:rounded-[24px] bg-white/[0.02] border border-white/[0.04]"
         >
-          <h3 className="text-[18px] font-light tracking-tight text-foreground/85 mb-3">
+          <h3 className="text-[16px] sm:text-[18px] font-light tracking-tight text-foreground/85 mb-3">
             Questions or Audit Requests
           </h3>
-          <p className="text-[14px] text-muted-foreground/70 font-light leading-relaxed mb-4">
+          <p className="text-[13px] sm:text-[14px] text-muted-foreground/70 font-light leading-relaxed mb-4">
             For detailed security questionnaires, SOC 2 reports (when available), or custom compliance documentation, contact our compliance team.
           </p>
           <a 
             href="mailto:info@maksat.pro" 
-            className="text-[14px] text-foreground/80 hover:text-foreground font-light transition-colors"
+            className="text-[13px] sm:text-[14px] text-foreground/80 hover:text-foreground font-light transition-colors"
           >
             info@maksat.pro →
           </a>
         </motion.div>
 
         {/* Disclaimer */}
-        <div className="mt-12 text-center">
-          <p className="text-[11px] text-muted-foreground/40 font-light leading-relaxed max-w-3xl mx-auto">
+        <div className="mt-10 sm:mt-12 text-center">
+          <p className="text-[10px] sm:text-[11px] text-muted-foreground/40 font-light leading-relaxed max-w-3xl mx-auto">
             This Trust Center is for informational purposes. Actual contractual obligations are defined in executed agreements (MSA, DPA, BAA). 
             info@maksat.pro reserves the right to update these standards; material changes will be communicated to active clients.
           </p>

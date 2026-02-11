@@ -1,6 +1,7 @@
 import { motion } from "motion/react";
 import { useState } from "react";
 import { FilterChip } from "../components/FilterChip";
+import { DiagonalShards } from "../components/DiagonalShards";
 
 type FilterType = "All" | "Advisory" | "Fund" | "Build";
 
@@ -69,26 +70,31 @@ export function Cases() {
     : cases.filter(c => c.category === activeFilter);
 
   return (
-    <div className="pt-32 pb-24 px-12">
-      <div className="max-w-[1200px] mx-auto">
+    <div className="pt-24 sm:pt-28 lg:pt-32 pb-16 sm:pb-20 lg:pb-24 px-6 sm:px-8 lg:px-12">
+      <div className="max-w-[1440px] mx-auto">
         {/* Hero */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="mb-16"
+          className="mb-12 sm:mb-16"
         >
-          <h1 className="text-[64px] font-light tracking-tight text-foreground/95 mb-6 leading-tight">
-            Case Studies
-          </h1>
-          
-          <p className="text-[17px] text-muted-foreground/70 font-light leading-relaxed max-w-2xl">
-            Select engagements across advisory, venture, and custom development. Some details anonymized per client request.
-          </p>
+          <div className="relative rounded-[28px] sm:rounded-[32px] bg-gradient-to-br from-[#1a1d26]/70 via-[#12141a]/85 to-[#1a1d26]/70 border border-white/[0.06] backdrop-blur-2xl overflow-hidden">
+            <DiagonalShards />
+            <div className="relative px-6 sm:px-10 lg:px-12 py-10 sm:py-12">
+              <h1 className="text-[36px] sm:text-[48px] lg:text-[64px] font-light tracking-tight text-foreground/95 mb-5 sm:mb-6 leading-tight">
+                Case Studies
+              </h1>
+              
+              <p className="text-[14px] sm:text-[16px] lg:text-[17px] text-muted-foreground/70 font-light leading-relaxed max-w-2xl">
+                Select engagements across advisory, venture, and custom development. Some details anonymized per client request.
+              </p>
+            </div>
+          </div>
         </motion.div>
 
         {/* Filters */}
-        <div className="flex items-center gap-3 mb-12">
+        <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-10 sm:mb-12">
           {(["All", "Advisory", "Fund", "Build"] as FilterType[]).map((filter) => (
             <FilterChip
               key={filter}
@@ -101,14 +107,14 @@ export function Cases() {
         </div>
 
         {/* Cases Grid */}
-        <div className="grid grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
           {filteredCases.map((caseItem, index) => (
             <motion.div
               key={caseItem.id}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
-              className="rounded-[24px] bg-gradient-to-br from-[#1a1d26]/50 via-[#12141a]/60 to-[#1a1d26]/50 border border-white/[0.06] p-8 hover:border-white/[0.1] transition-all duration-500 group"
+              className="rounded-[22px] sm:rounded-[24px] bg-gradient-to-br from-[#1a1d26]/50 via-[#12141a]/60 to-[#1a1d26]/50 border border-white/[0.06] p-6 sm:p-8 hover:border-white/[0.1] transition-all duration-500 group"
             >
               {/* Category Badge */}
               <div className="flex items-center justify-between mb-6">
@@ -122,21 +128,21 @@ export function Cases() {
                   <div className="w-1 h-1 rounded-full bg-current" />
                   {caseItem.category}
                 </span>
-                <span className="text-[12px] text-muted-foreground/50 font-light">
+                <span className="text-[11px] sm:text-[12px] text-muted-foreground/50 font-light">
                   {caseItem.geography}
                 </span>
               </div>
 
               {/* Title & Client */}
-              <h3 className="text-[24px] font-light tracking-tight text-foreground/90 mb-2 group-hover:text-foreground/95 transition-colors">
+              <h3 className="text-[20px] sm:text-[24px] font-light tracking-tight text-foreground/90 mb-2 group-hover:text-foreground/95 transition-colors">
                 {caseItem.title}
               </h3>
-              <p className="text-[13px] text-muted-foreground/60 font-light mb-4">
+              <p className="text-[12px] sm:text-[13px] text-muted-foreground/60 font-light mb-4">
                 {caseItem.client}
               </p>
 
               {/* Description */}
-              <p className="text-[14px] text-muted-foreground/70 font-light leading-relaxed mb-6">
+              <p className="text-[13px] sm:text-[14px] text-muted-foreground/70 font-light leading-relaxed mb-6">
                 {caseItem.description}
               </p>
 
@@ -145,7 +151,7 @@ export function Cases() {
                 {caseItem.metrics.map((metric) => (
                   <span 
                     key={metric}
-                    className="px-3 py-1 rounded-full bg-white/[0.03] border border-white/[0.05] text-[12px] text-muted-foreground/60 font-light"
+                    className="px-3 py-1 rounded-full bg-white/[0.03] border border-white/[0.05] text-[11px] sm:text-[12px] text-muted-foreground/60 font-light"
                   >
                     {metric}
                   </span>
@@ -160,9 +166,9 @@ export function Cases() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="mt-16 text-center"
+          className="mt-12 sm:mt-16 text-center"
         >
-          <p className="text-[11px] text-muted-foreground/40 font-light leading-relaxed max-w-2xl mx-auto">
+          <p className="text-[10px] sm:text-[11px] text-muted-foreground/40 font-light leading-relaxed max-w-2xl mx-auto">
             Metrics are illustrative and reflect results achieved during engagement period. Client names withheld per NDA. 
             Past performance does not guarantee future results.
           </p>

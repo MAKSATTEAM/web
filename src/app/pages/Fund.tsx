@@ -1,5 +1,7 @@
+import React from "react";
 import { motion } from "motion/react";
 import { PillButton } from "../components/PillButton";
+import { DiagonalShards } from "../components/DiagonalShards";
 
 export function Fund() {
   const thesisPoints = [
@@ -45,50 +47,55 @@ export function Fund() {
   ];
 
   return (
-    <div className="pt-32 pb-24 px-12">
-      <div className="max-w-[1200px] mx-auto">
+    <div className="pt-24 sm:pt-28 lg:pt-32 pb-16 sm:pb-20 lg:pb-24 px-6 sm:px-8 lg:px-12">
+      <div className="max-w-[1440px] mx-auto">
         {/* Hero */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="mb-24"
+          className="mb-16 sm:mb-20 lg:mb-24"
         >
-          <div className="inline-flex items-center gap-2 mb-6">
-            <div className="w-1.5 h-1.5 rounded-full bg-foreground/60" />
-            <span className="text-[13px] text-muted-foreground/60 font-light uppercase tracking-wider">
-              Capital
-            </span>
-          </div>
-          
-          <h1 className="text-[64px] font-light tracking-tight text-foreground/95 mb-6 leading-tight max-w-4xl">
-            Thesis-driven venture for regulated cross-border infrastructure
-          </h1>
-          
-          <p className="text-[17px] text-muted-foreground/70 font-light leading-relaxed max-w-2xl mb-10">
-            Early-stage investments (Seed to Series A) in companies building compliant, evidence-based infrastructure across emerging markets.
-          </p>
+          <div className="relative rounded-[28px] sm:rounded-[32px] bg-gradient-to-br from-[#1a1d26]/70 via-[#12141a]/85 to-[#1a1d26]/70 border border-white/[0.06] backdrop-blur-2xl overflow-hidden">
+            <DiagonalShards />
+            <div className="relative px-6 sm:px-10 lg:px-12 py-10 sm:py-12">
+              <div className="inline-flex items-center gap-2 mb-5">
+                <div className="w-1.5 h-1.5 rounded-full bg-foreground/60" />
+                <span className="text-[12px] sm:text-[13px] text-muted-foreground/60 font-light uppercase tracking-wider">
+                  Capital
+                </span>
+              </div>
+              
+              <h1 className="text-[36px] sm:text-[48px] lg:text-[64px] font-light tracking-tight text-foreground/95 mb-5 sm:mb-6 leading-tight max-w-4xl">
+                Thesis-driven venture for regulated cross-border infrastructure
+              </h1>
+              
+              <p className="text-[14px] sm:text-[16px] lg:text-[17px] text-muted-foreground/70 font-light leading-relaxed max-w-2xl mb-8 sm:mb-10">
+                Early-stage investments (Seed to Series A) in companies building compliant, evidence-based infrastructure across emerging markets.
+              </p>
 
-          <div className="flex items-center gap-4">
-            <PillButton variant="primary">
-              Submit deck
-            </PillButton>
-            <PillButton variant="secondary">
-              Download thesis
-            </PillButton>
+              <div className="flex flex-wrap items-center gap-3 sm:gap-4">
+                <PillButton variant="primary" className="w-full sm:w-auto justify-center">
+                  Submit deck
+                </PillButton>
+                <PillButton variant="secondary" className="w-full sm:w-auto justify-center">
+                  Download thesis
+                </PillButton>
+              </div>
+            </div>
           </div>
         </motion.div>
 
         {/* Investment Thesis */}
-        <section className="mb-24">
-          <h2 className="text-[36px] font-light tracking-tight text-foreground/90 mb-4">
+        <section className="mb-16 sm:mb-20 lg:mb-24">
+          <h2 className="text-[26px] sm:text-[32px] lg:text-[36px] font-light tracking-tight text-foreground/90 mb-4">
             Investment Thesis
           </h2>
-          <p className="text-[15px] text-muted-foreground/60 font-light leading-relaxed max-w-3xl mb-12">
+          <p className="text-[13px] sm:text-[15px] text-muted-foreground/60 font-light leading-relaxed max-w-3xl mb-8 sm:mb-12">
             We back founders building regulated infrastructure in markets where compliance is a moat, not a burden.
           </p>
 
-          <div className="grid grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
             {thesisPoints.map((point, index) => (
               <motion.div
                 key={point.title}
@@ -96,15 +103,15 @@ export function Fund() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="rounded-[24px] bg-gradient-to-br from-[#1a1d26]/50 via-[#12141a]/60 to-[#1a1d26]/50 border border-white/[0.06] p-8"
+                className="rounded-[22px] sm:rounded-[24px] bg-gradient-to-br from-[#1a1d26]/50 via-[#12141a]/60 to-[#1a1d26]/50 border border-white/[0.06] p-6 sm:p-8"
               >
                 <div className="text-[11px] text-muted-foreground/40 font-light uppercase tracking-wider mb-4">
                   Focus Area {String(index + 1).padStart(2, '0')}
                 </div>
-                <h3 className="text-[22px] font-light tracking-tight text-foreground/90 mb-3">
+                <h3 className="text-[20px] sm:text-[22px] font-light tracking-tight text-foreground/90 mb-3">
                   {point.title}
                 </h3>
-                <p className="text-[14px] text-muted-foreground/70 font-light leading-relaxed">
+                <p className="text-[13px] sm:text-[14px] text-muted-foreground/70 font-light leading-relaxed">
                   {point.description}
                 </p>
               </motion.div>
@@ -113,19 +120,19 @@ export function Fund() {
         </section>
 
         {/* Portfolio Preview */}
-        <section className="mb-24">
-          <div className="flex items-end justify-between mb-8">
+        <section className="mb-16 sm:mb-20 lg:mb-24">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between mb-6 sm:mb-8">
             <div>
-              <h2 className="text-[36px] font-light tracking-tight text-foreground/90 mb-3">
+              <h2 className="text-[26px] sm:text-[32px] lg:text-[36px] font-light tracking-tight text-foreground/90 mb-3">
                 Portfolio
               </h2>
-              <p className="text-[14px] text-muted-foreground/60 font-light">
+              <p className="text-[13px] sm:text-[14px] text-muted-foreground/60 font-light">
                 Select active investments and pipeline (some anonymized per founder request).
               </p>
             </div>
           </div>
 
-          <div className="rounded-[28px] bg-gradient-to-br from-[#1a1d26]/40 via-[#12141a]/50 to-[#1a1d26]/40 border border-white/[0.06] overflow-hidden">
+          <div className="rounded-[26px] sm:rounded-[28px] bg-gradient-to-br from-[#1a1d26]/40 via-[#12141a]/50 to-[#1a1d26]/40 border border-white/[0.06] overflow-hidden">
             <div className="divide-y divide-white/[0.04]">
               {portfolio.map((company, index) => (
                 <motion.div
@@ -134,27 +141,27 @@ export function Fund() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
-                  className="p-6 hover:bg-white/[0.02] transition-colors duration-300"
+                  className="p-5 sm:p-6 hover:bg-white/[0.02] transition-colors duration-300"
                 >
-                  <div className="flex items-center justify-between">
+                  <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
                     <div className="flex-1">
-                      <h3 className="text-[18px] font-light text-foreground/85 mb-1">
+                      <h3 className="text-[16px] sm:text-[18px] font-light text-foreground/85 mb-1">
                         {company.name}
                       </h3>
-                      <p className="text-[13px] text-muted-foreground/60 font-light">
+                      <p className="text-[12px] sm:text-[13px] text-muted-foreground/60 font-light">
                         {company.sector}
                       </p>
                     </div>
-                    <div className="flex items-center gap-12">
-                      <div className="text-right">
+                    <div className="flex flex-wrap items-center gap-6 md:gap-12">
+                      <div className="text-left md:text-right">
                         <div className="text-[11px] text-muted-foreground/40 font-light uppercase tracking-wider mb-1">
                           Geography
                         </div>
-                        <div className="text-[13px] text-muted-foreground/70 font-light">
+                        <div className="text-[12px] sm:text-[13px] text-muted-foreground/70 font-light">
                           {company.geography}
                         </div>
                       </div>
-                      <div className="min-w-[100px] text-right">
+                      <div className="min-w-[100px] text-left md:text-right">
                         <span className={`inline-block px-3 py-1 rounded-full text-[11px] font-light ${
                           company.status === 'Active' 
                             ? 'bg-green-500/10 text-green-400/80 border border-green-500/20' 
@@ -173,13 +180,13 @@ export function Fund() {
 
         {/* Investment Criteria */}
         <section>
-          <h2 className="text-[36px] font-light tracking-tight text-foreground/90 mb-12">
+          <h2 className="text-[26px] sm:text-[32px] lg:text-[36px] font-light tracking-tight text-foreground/90 mb-8 sm:mb-12">
             What We Look For
           </h2>
 
-          <div className="grid grid-cols-2 gap-6">
-            <div className="rounded-[24px] bg-white/[0.02] border border-white/[0.04] p-8">
-              <h3 className="text-[20px] font-light tracking-tight text-foreground/85 mb-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+            <div className="rounded-[22px] sm:rounded-[24px] bg-white/[0.02] border border-white/[0.04] p-6 sm:p-8">
+              <h3 className="text-[18px] sm:text-[20px] font-light tracking-tight text-foreground/85 mb-6">
                 Stage & Check Size
               </h3>
               <div className="space-y-4">
@@ -198,11 +205,11 @@ export function Fund() {
               </div>
             </div>
 
-            <div className="rounded-[24px] bg-white/[0.02] border border-white/[0.04] p-8">
-              <h3 className="text-[20px] font-light tracking-tight text-foreground/85 mb-6">
+            <div className="rounded-[22px] sm:rounded-[24px] bg-white/[0.02] border border-white/[0.04] p-6 sm:p-8">
+              <h3 className="text-[18px] sm:text-[20px] font-light tracking-tight text-foreground/85 mb-6">
                 Founder Profile
               </h3>
-              <div className="space-y-3 text-[14px] text-muted-foreground/70 font-light leading-relaxed">
+              <div className="space-y-3 text-[13px] sm:text-[14px] text-muted-foreground/70 font-light leading-relaxed">
                 <p>• Domain expertise in regulated industries</p>
                 <p>• Evidence of PMF (revenue, LOIs, pilot results)</p>
                 <p>• Willingness to operate in compliance-first mode</p>

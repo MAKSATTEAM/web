@@ -17,7 +17,7 @@ export function DiagonalShards() {
       {/* Shard 1 */}
       <motion.div 
         style={{ y: y1 }}
-        className="absolute top-[-10%] right-[-5%] w-[45%] h-[70%] rotate-[-15deg] rounded-[24px]"
+        className="absolute top-[-12%] right-[-12%] w-[65%] h-[55%] sm:top-[-10%] sm:right-[-5%] sm:w-[45%] sm:h-[70%] rotate-[-15deg] rounded-[24px]"
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.8, delay: 0.2 }}
@@ -34,7 +34,7 @@ export function DiagonalShards() {
       {/* Shard 2 */}
       <motion.div 
         style={{ y: y2 }}
-        className="absolute bottom-[-15%] right-[15%] w-[50%] h-[60%] rotate-[25deg] rounded-[24px]"
+        className="absolute bottom-[-18%] right-[5%] w-[70%] h-[50%] sm:bottom-[-15%] sm:right-[15%] sm:w-[50%] sm:h-[60%] rotate-[25deg] rounded-[24px]"
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.8, delay: 0.3 }}
@@ -51,7 +51,7 @@ export function DiagonalShards() {
       {/* Shard 3 */}
       <motion.div 
         style={{ y: y3 }}
-        className="absolute top-[20%] left-[-8%] w-[40%] h-[65%] rotate-[35deg] rounded-[24px]"
+        className="absolute top-[25%] left-[-18%] w-[60%] h-[50%] sm:top-[20%] sm:left-[-8%] sm:w-[40%] sm:h-[65%] rotate-[35deg] rounded-[24px]"
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.8, delay: 0.4 }}
