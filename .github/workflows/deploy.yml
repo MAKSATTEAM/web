@@ -1,0 +1,31 @@
+name: Deploy to server
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.DEPLOY_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan -H 77.233.212.108 >> ~/.ssh/known_hosts
+
+      - name: Build
+        run: |
+          npm ci
+          npm run build
+
+      - name: Upload dist
+        run: |
+          rsync -az --delete dist/ web@77.233.212.108:/srv/corpweb/site/dist/
+
+      - name: Publish to Nginx dir
+        run: |
+          ssh web@77.233.212.108 "sudo rm -rf /var/www/corpweb/* && sudo cp -r /srv/corpweb/site/dist/* /var/www/corpweb/ && sudo chown -R web:web /var/www/corpweb"
