@@ -8,7 +8,7 @@ export function Fund() {
       description: "Solutions for Clubs, Leagues and end clients addressing US/MENA/CIS digitization with proven PMF."
     },
     {
-      title: "WelnessTech",
+      title: "WellnessTech",
       description: "Industrial efficiency, wellbeing management, and wareable quipments integration with hard metrics."
     },
     {
