@@ -24,7 +24,7 @@ export function Home() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="relative max-w-[1440px] w-full"
+          className="relative max-w-[1200px] w-full"
         >
           {/* Large Dark Panel with Diagonal Shards */}
           <div className="relative rounded-[28px] sm:rounded-[32px] lg:rounded-[36px] bg-gradient-to-br from-[#1a1d26]/80 via-[#12141a]/90 to-[#1a1d26]/80 border border-white/[0.06] backdrop-blur-2xl overflow-hidden shadow-[0_24px_80px_rgba(0,0,0,0.5)]">
@@ -86,7 +86,7 @@ export function Home() {
       </section>
 
       {/* Three Directions - Visual Priority */}
-      <section className="max-w-[1440px] mx-auto px-6 sm:px-8 lg:px-12 py-16 sm:py-20 lg:py-24">
+      <section className="max-w-[1200px] mx-auto px-6 sm:px-8 lg:px-12 py-16 sm:py-20 lg:py-24">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
           {/* Advisory - Primary (Largest) */}
           <motion.div
@@ -188,7 +188,7 @@ export function Home() {
       </section>
 
       {/* Trust Center Preview */}
-      <section className="max-w-[1440px] mx-auto px-6 sm:px-8 lg:px-12 py-12 sm:py-16">
+      <section className="max-w-[1200px] mx-auto px-6 sm:px-8 lg:px-12 py-12 sm:py-16">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -250,7 +250,7 @@ export function Home() {
       </section>
 
       {/* Disclaimer */}
-      <section className="max-w-[1440px] mx-auto px-6 sm:px-8 lg:px-12 py-8 mb-16">
+      <section className="max-w-[1200px] mx-auto px-6 sm:px-8 lg:px-12 py-8 mb-16">
         <p className="text-[10px] sm:text-[11px] text-muted-foreground/40 font-light text-center leading-relaxed">
           Numbers are illustrative. No guarantee. Some cases anonymized. Past performance does not indicate future results.
         </p>

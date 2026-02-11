@@ -2,14 +2,8 @@ import { Link } from "react-router";
 import { Search, Menu, X } from "lucide-react";
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { Switch } from "./ui/switch";
 
-interface HeaderProps {
-  reducedMotion: boolean;
-  onToggleReducedMotion: () => void;
-}
-
-export function Header({ reducedMotion, onToggleReducedMotion }: HeaderProps) {
+export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const navLinks = [
@@ -23,7 +17,7 @@ export function Header({ reducedMotion, onToggleReducedMotion }: HeaderProps) {
   return (
     <>
       <header className="fixed top-0 left-0 right-0 z-50 border-b border-white/5 backdrop-blur-xl bg-background/80">
-        <div className="max-w-[1440px] mx-auto px-6 sm:px-8 lg:px-12 py-4 sm:py-6 flex items-center justify-between">
+        <div className="max-w-[1200px] mx-auto px-6 sm:px-8 lg:px-12 py-4 sm:py-6 flex items-center justify-between">
           {/* Left: Logo + Descriptor */}
           <Link to="/" className="flex items-baseline gap-3 group">
             <span className="text-[15px] sm:text-[17px] tracking-tight text-foreground/95 transition-colors group-hover:text-foreground">
@@ -93,14 +87,6 @@ export function Header({ reducedMotion, onToggleReducedMotion }: HeaderProps) {
                     </Link>
                   </motion.div>
                 ))}
-                <div className="pt-6 flex items-center justify-center gap-3 text-[12px] text-muted-foreground/60 font-light">
-                  <span>Reduce Motion</span>
-                  <Switch
-                    checked={reducedMotion}
-                    onCheckedChange={onToggleReducedMotion}
-                    aria-label="Reduce motion"
-                  />
-                </div>
               </motion.nav>
             </div>
           </motion.div>
