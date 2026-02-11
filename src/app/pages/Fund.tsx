@@ -67,11 +67,11 @@ export function Fund() {
               </div>
               
               <h1 className="text-[36px] sm:text-[48px] lg:text-[64px] font-light tracking-tight text-foreground/95 mb-5 sm:mb-6 leading-tight max-w-4xl">
-                Thesis-driven venture for regulated cross-border infrastructure
+                Thesis-led venture capital in regulated, cross-border infrastructure
               </h1>
               
               <p className="text-[14px] sm:text-[16px] lg:text-[17px] text-muted-foreground/70 font-light leading-relaxed max-w-2xl mb-8 sm:mb-10">
-                Early-stage investments (Seed to Series A) in companies building compliant, evidence-based infrastructure across emerging markets.
+                Early-stage (Seed to Series A) investments in companies building compliance-first, audit-ready infrastructure for emerging markets — designed to scale across borders.
               </p>
 
               <div className="flex flex-wrap items-center gap-3 sm:gap-4">

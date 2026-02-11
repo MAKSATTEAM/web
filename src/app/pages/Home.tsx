@@ -252,7 +252,7 @@ export function Home() {
       {/* Disclaimer */}
       <section className="max-w-[1200px] mx-auto px-6 sm:px-8 lg:px-12 py-8 mb-16">
         <p className="text-[10px] sm:text-[11px] text-muted-foreground/40 font-light text-center leading-relaxed">
-          Numbers are illustrative. No guarantee. Some cases anonymized. Past performance does not indicate future results.
+          Information on this website is provided for general informational purposes only and does not constitute investment, legal, tax, or other professional advice. Any numbers, forecasts, ranges, and scenarios are illustrative and may be based on assumptions; actual results may differ materially. No guarantees are made regarding outcomes, performance, or timelines. Some case studies are anonymized and/or aggregated; details may be modified to protect confidentiality. Past performance, if referenced, is not indicative of future results.
         </p>
       </section>
     </div>
