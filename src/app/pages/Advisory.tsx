@@ -7,12 +7,12 @@ export function Advisory() {
   const capabilities = [
     {
       title: "Strategic Transformation",
-      description: "Multi-year roadmaps with quarterly stage-gates and CFO-ready business cases.",
-      deliverables: ["Business case models", "Roadmap documentation", "Risk registers"]
+      description: "Multi-year roadmaps with quarterly stage-gates and CFO-grade business cases.",
+      deliverables: ["Business case models", "Roadmap & stage-gate plan", "Risk registers"]
     },
     {
       title: "Technical Due Diligence",
-      description: "Investment-grade assessments for M&A, pre-IPO, or governance reviews.",
+      description: "Investment-grade assessments for M&A, IPO-readiness, or governance reviews.",
       deliverables: ["Architecture reviews", "Code quality audits", "Security assessments"]
     },
     {

@@ -31,7 +31,7 @@ export function TrustCenter() {
       title: "Compliance Posture",
       items: [
         { label: "GDPR Baseline", value: "Art. 28 DPA template; DPIA support available" },
-        { label: "PDPL (UAE)", value: "Alignment review completed Q4 2025" },
+        { label: "PDPL (UAE)", value: "In progress (audit expected Q4 2026)" },
         { label: "SOC 2 Type II", value: "In progress (audit expected Q2 2026)" },
         { label: "US Vendor Readiness", value: "Standard MSA/BAA available" },
         { label: "Export Controls", value: "ITAR/EAR compliance review on request" }
@@ -41,7 +41,7 @@ export function TrustCenter() {
       icon: FileCheck,
       title: "Delivery Standards",
       items: [
-        { label: "Documentation of Decisions (DoD)", value: "All strategic decisions logged with rationale" },
+        //{ label: "Documentation of Decisions (DoD)", value: "All strategic decisions logged with rationale" },
         { label: "Change Control", value: "Formal approval for scope/architecture changes" },
         { label: "Acceptance Criteria", value: "Defined at stage-gate; evidence-based sign-off" },
         { label: "IP Assignment", value: "Clear ownership; work-for-hire where applicable" },
@@ -170,8 +170,8 @@ export function TrustCenter() {
         {/* Disclaimer */}
         <div className="mt-10 sm:mt-12 text-center">
           <p className="text-[10px] sm:text-[11px] text-muted-foreground/40 font-light leading-relaxed max-w-3xl mx-auto">
-            This Trust Center is for informational purposes. Actual contractual obligations are defined in executed agreements (MSA, DPA, BAA). 
-            info@maksat.pro reserves the right to update these standards; material changes will be communicated to active clients.
+            <b>Trust Center Notice</b><br />
+            This Trust Center is provided for informational purposes only and does not create any contractual obligations. Any binding commitments are set out solely in duly executed agreements, including the Master Services Agreement (MSA) and, where applicable, the Data Processing Addendum (DPA) and/or Business Associate Agreement (BAA). Maksat may update these standards from time to time. Material changes will be communicated to active clients in accordance with the applicable agreement. For questions, contact info@maksat.pro
           </p>
         </div>
       </div>
