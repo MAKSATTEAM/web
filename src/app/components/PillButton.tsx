@@ -8,6 +8,8 @@ interface PillButtonProps {
   onClick?: () => void;
   icon?: ReactNode;
   className?: string;
+  type?: "button" | "submit" | "reset";
+  disabled?: boolean;
 }
 
 export function PillButton({ 
@@ -16,7 +18,9 @@ export function PillButton({
   href, 
   onClick,
   icon,
-  className
+  className,
+  type = "button",
+  disabled = false,
 }: PillButtonProps) {
   const baseClasses = "inline-flex items-center gap-2.5 px-5 py-2.5 sm:px-6 sm:py-3 rounded-full text-[13px] sm:text-[14px] font-light tracking-tight transition-all duration-300";
   
@@ -41,10 +45,12 @@ export function PillButton({
 
   return (
     <Component
-      whileHover={{ scale: 1.02 }}
-      whileTap={{ scale: 0.98 }}
-      className={`${baseClasses} ${variantClasses[variant]} ${className ?? ""}`}
+      whileHover={disabled ? undefined : { scale: 1.02 }}
+      whileTap={disabled ? undefined : { scale: 0.98 }}
+      className={`${baseClasses} ${variantClasses[variant]} ${disabled ? "opacity-60 cursor-not-allowed" : ""} ${className ?? ""}`}
       onClick={onClick}
+      type={type}
+      disabled={disabled}
     >
       {content}
     </Component>

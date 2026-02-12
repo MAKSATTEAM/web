@@ -172,7 +172,7 @@ export function TrustCenter() {
         {/* Disclaimer */}
         <div className="mt-10 sm:mt-12 text-center">
           <p className="text-[10px] sm:text-[11px] text-muted-foreground/40 font-light leading-relaxed max-w-3xl mx-auto">
-            <b>Trust Center Notice</b><br />
+            <span className="font-semibold">Trust Center Notice</span><br />
             This Trust Center is provided for informational purposes only and does not create any contractual obligations. Any binding commitments are set out solely in duly executed agreements, including the Master Services Agreement (MSA) and, where applicable, the Data Processing Addendum (DPA) and/or Business Associate Agreement (BAA). See our{" "}
             <Link to="/terms" className="text-foreground/60 hover:text-foreground/80 transition-colors">Terms</Link>
             {" "}and{" "}
