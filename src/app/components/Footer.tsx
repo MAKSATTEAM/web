@@ -20,12 +20,12 @@ export function Footer() {
             <Link to="/trust-center" className="hover:text-foreground/80 transition-colors">
               Trust Center
             </Link>
-            <a href="#" className="hover:text-foreground/80 transition-colors">
+            <Link to="/privacy" className="hover:text-foreground/80 transition-colors">
               Privacy
-            </a>
-            <a href="#" className="hover:text-foreground/80 transition-colors">
+            </Link>
+            <Link to="/terms" className="hover:text-foreground/80 transition-colors">
               Terms
-            </a>
+            </Link>
             <span className="text-muted-foreground/40">
               © 2026
             </span>

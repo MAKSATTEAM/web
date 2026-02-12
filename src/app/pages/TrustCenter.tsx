@@ -1,4 +1,6 @@
+import React from "react";
 import { motion } from "motion/react";
+import { Link } from "react-router";
 import { Shield, Database, Lock, FileCheck, Scale, AlertCircle } from "lucide-react";
 import { DiagonalShards } from "../components/DiagonalShards";
 
@@ -171,7 +173,11 @@ export function TrustCenter() {
         <div className="mt-10 sm:mt-12 text-center">
           <p className="text-[10px] sm:text-[11px] text-muted-foreground/40 font-light leading-relaxed max-w-3xl mx-auto">
             <b>Trust Center Notice</b><br />
-            This Trust Center is provided for informational purposes only and does not create any contractual obligations. Any binding commitments are set out solely in duly executed agreements, including the Master Services Agreement (MSA) and, where applicable, the Data Processing Addendum (DPA) and/or Business Associate Agreement (BAA). Maksat may update these standards from time to time. Material changes will be communicated to active clients in accordance with the applicable agreement. For questions, contact info@maksat.pro
+            This Trust Center is provided for informational purposes only and does not create any contractual obligations. Any binding commitments are set out solely in duly executed agreements, including the Master Services Agreement (MSA) and, where applicable, the Data Processing Addendum (DPA) and/or Business Associate Agreement (BAA). See our{" "}
+            <Link to="/terms" className="text-foreground/60 hover:text-foreground/80 transition-colors">Terms</Link>
+            {" "}and{" "}
+            <Link to="/privacy" className="text-foreground/60 hover:text-foreground/80 transition-colors">Privacy Policy</Link>
+            . Maksat may update these standards from time to time. Material changes will be communicated to active clients. For questions, contact info@maksat.pro
           </p>
         </div>
       </div>

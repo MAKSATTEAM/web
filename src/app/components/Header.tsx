@@ -1,10 +1,13 @@
+import React from "react";
 import { Link } from "react-router";
 import { Search, Menu, X } from "lucide-react";
 import { useState } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import { motion, AnimatePresence, useScroll, useTransform } from "motion/react";
 
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const { scrollY } = useScroll();
+  const blurOpacity = useTransform(scrollY, [0, 120], [0, 0.95]);
 
   const navLinks = [
     { to: "/advisory", label: "Advisory" },
@@ -16,8 +19,16 @@ export function Header() {
 
   return (
     <>
-      <header className="fixed top-0 left-0 right-0 z-50 border-b border-white/5 backdrop-blur-xl bg-background/80">
-        <div className="max-w-[1200px] mx-auto px-6 sm:px-8 lg:px-12 py-4 sm:py-6 flex items-center justify-between">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-transparent">
+        <motion.div
+          className="absolute inset-0 backdrop-blur-xl pointer-events-none"
+          style={{
+            opacity: blurOpacity,
+            maskImage: "linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0.95))",
+            WebkitMaskImage: "linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0.95))",
+          }}
+        />
+        <div className="relative max-w-[1200px] mx-auto px-6 sm:px-8 lg:px-12 py-4 sm:py-6 flex items-center justify-between">
           {/* Left: Logo + Descriptor */}
           <Link to="/" className="flex items-baseline gap-3 group">
             <span className="text-[15px] sm:text-[17px] tracking-tight text-foreground/95 transition-colors group-hover:text-foreground">
