@@ -1,4 +1,5 @@
 import { motion } from "motion/react";
+import { Link } from "react-router";
 import { PillButton } from "../components/PillButton";
 import { Mail, MapPin, Phone } from "lucide-react";
 import { DiagonalShards } from "../components/DiagonalShards";
@@ -172,13 +173,16 @@ export function Contact() {
         >
           <p className="text-[12px] sm:text-[13px] text-muted-foreground/60 font-light leading-relaxed mb-4">
             For security incidents, compliance questions, or whistleblower reports, see our{" "}
-            <a href="/trust-center" className="text-foreground/80 hover:text-foreground transition-colors">
+            <Link to="/trust-center" className="text-foreground/80 hover:text-foreground transition-colors">
               Trust Center
-            </a>
+            </Link>
             .
           </p>
           <p className="text-[10px] sm:text-[11px] text-muted-foreground/40 font-light">
-            All inquiries are handled confidentially. We typically respond within 1 business day.
+            All inquiries are handled confidentially. We typically respond within 1 business day. By submitting, you agree to our{" "}
+            <Link to="/terms" className="text-muted-foreground/60 hover:text-foreground/80 transition-colors">Terms</Link>
+            {" "}and{" "}
+            <Link to="/privacy" className="text-muted-foreground/60 hover:text-foreground/80 transition-colors">Privacy Policy</Link>.
           </p>
         </motion.div>
       </div>
