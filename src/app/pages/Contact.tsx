@@ -1,3 +1,5 @@
+import { useState } from "react";
+import type { ChangeEvent, FormEvent } from "react";
 import { motion } from "motion/react";
 import { Link } from "react-router";
 import { PillButton } from "../components/PillButton";
@@ -5,6 +7,61 @@ import { Mail, MapPin, Phone } from "lucide-react";
 import { DiagonalShards } from "../components/DiagonalShards";
 
 export function Contact() {
+  const [form, setForm] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    interest: "",
+    message: "",
+  });
+  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+    const { name, value } = event.target;
+    setForm((prev) => ({ ...prev, [name]: value }));
+    if (status !== "idle") {
+      setStatus("idle");
+      setErrorMessage("");
+    }
+  };
+
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    if (status === "sending") return;
+
+    setStatus("sending");
+    setErrorMessage("");
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+
+      if (!response.ok) {
+        const data = await response.json().catch(() => ({}));
+        const message = typeof data?.message === "string" ? data.message : "Something went wrong.";
+        throw new Error(message);
+      }
+
+      setStatus("success");
+      setForm({
+        firstName: "",
+        lastName: "",
+        email: "",
+        interest: "",
+        message: "",
+      });
+    } catch (error) {
+      const message = error instanceof Error ? error.message : "Something went wrong.";
+      setStatus("error");
+      setErrorMessage(message);
+    }
+  };
+
   return (
     <div className="pt-24 sm:pt-28 lg:pt-32 pb-16 sm:pb-20 lg:pb-24 px-6 sm:px-8 lg:px-12">
       <div className="max-w-[1200px] mx-auto">
@@ -97,7 +154,7 @@ export function Contact() {
             Send a Message
           </h2>
 
-          <form className="space-y-6">
+          <form className="space-y-6" onSubmit={handleSubmit}>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
               <div>
                 <label className="block text-[13px] text-muted-foreground/70 font-light mb-2">
@@ -105,6 +162,9 @@ export function Contact() {
                 </label>
                 <input
                   type="text"
+                  name="firstName"
+                  value={form.firstName}
+                  onChange={handleChange}
                   className="w-full px-4 py-3 rounded-xl bg-white/[0.03] border border-white/[0.08] text-[13px] sm:text-[14px] text-foreground/90 font-light focus:bg-white/[0.05] focus:border-white/[0.15] transition-all outline-none"
                   placeholder="John"
                 />
@@ -115,6 +175,9 @@ export function Contact() {
                 </label>
                 <input
                   type="text"
+                  name="lastName"
+                  value={form.lastName}
+                  onChange={handleChange}
                   className="w-full px-4 py-3 rounded-xl bg-white/[0.03] border border-white/[0.08] text-[13px] sm:text-[14px] text-foreground/90 font-light focus:bg-white/[0.05] focus:border-white/[0.15] transition-all outline-none"
                   placeholder="Doe"
                 />
@@ -127,6 +190,10 @@ export function Contact() {
               </label>
               <input
                 type="email"
+                name="email"
+                required
+                value={form.email}
+                onChange={handleChange}
                 className="w-full px-4 py-3 rounded-xl bg-white/[0.03] border border-white/[0.08] text-[13px] sm:text-[14px] text-foreground/90 font-light focus:bg-white/[0.05] focus:border-white/[0.15] transition-all outline-none"
                 placeholder="john@company.com"
               />
@@ -136,7 +203,12 @@ export function Contact() {
               <label className="block text-[13px] text-muted-foreground/70 font-light mb-2">
                 Interest Area
               </label>
-              <select className="w-full px-4 py-3 rounded-xl bg-white/[0.03] border border-white/[0.08] text-[13px] sm:text-[14px] text-foreground/90 font-light focus:bg-white/[0.05] focus:border-white/[0.15] transition-all outline-none">
+              <select
+                name="interest"
+                value={form.interest}
+                onChange={handleChange}
+                className="w-full px-4 py-3 rounded-xl bg-white/[0.03] border border-white/[0.08] text-[13px] sm:text-[14px] text-foreground/90 font-light focus:bg-white/[0.05] focus:border-white/[0.15] transition-all outline-none"
+              >
                 <option value="">Select...</option>
                 <option value="advisory">Advisory</option>
                 <option value="fund">Venture Fund</option>
@@ -151,15 +223,37 @@ export function Contact() {
               </label>
               <textarea
                 rows={5}
+                name="message"
+                required
+                value={form.message}
+                onChange={handleChange}
                 className="w-full px-4 py-3 rounded-xl bg-white/[0.03] border border-white/[0.08] text-[13px] sm:text-[14px] text-foreground/90 font-light focus:bg-white/[0.05] focus:border-white/[0.15] transition-all outline-none resize-none"
                 placeholder="Tell us about your project or inquiry..."
               />
             </div>
 
             <div className="text-center pt-4">
-              <PillButton variant="primary" className="w-full sm:w-auto justify-center">
-                Send Message
+              <PillButton
+                variant="primary"
+                type="submit"
+                disabled={status === "sending"}
+                className="w-full sm:w-auto justify-center"
+              >
+                {status === "sending" ? "Sending..." : "Send Message"}
               </PillButton>
+            </div>
+
+            <div className="min-h-[20px] text-center" aria-live="polite">
+              {status === "success" && (
+                <p className="text-[12px] sm:text-[13px] text-foreground/80 font-light">
+                  Thanks! Your message has been sent.
+                </p>
+              )}
+              {status === "error" && (
+                <p className="text-[12px] sm:text-[13px] text-red-400/90 font-light">
+                  {errorMessage || "We couldn’t send your message. Please try again."}
+                </p>
+              )}
             </div>
           </form>
         </motion.div>
