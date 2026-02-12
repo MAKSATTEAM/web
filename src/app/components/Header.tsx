@@ -107,7 +107,7 @@ export function Header() {
                     animate={{ width: 220, opacity: 1, marginRight: 8 }}
                     exit={{ width: 0, opacity: 0, marginRight: 0 }}
                     transition={{ duration: 0.2, ease: "easeOut" }}
-                    className="absolute right-9 top-1/2 z-[999] h-9 -translate-y-1/2 overflow-hidden rounded-full bg-white/5 border border-white/[0.08] focus-within:ring-1 focus-within:ring-white/20 sm:static sm:right-auto sm:top-auto sm:translate-y-0"
+                    className="absolute right-9 top-1/2 z-[999] h-9 -translate-y-1/2 overflow-hidden rounded-full bg-white/5 border border-white/[0.08] backdrop-blur-sm focus-within:ring-1 focus-within:ring-white/20 sm:static sm:right-auto sm:top-auto sm:translate-y-0"
                     style={{ maxWidth: "clamp(160px, 40vw, 220px)" }}
                     onSubmit={handleSearchSubmit}
                   >
@@ -121,7 +121,7 @@ export function Header() {
                         }
                       }}
                       placeholder="Search cases..."
-                      className="w-full h-full box-border rounded-full bg-background/95 text-[13px] text-foreground/90 placeholder:text-muted-foreground/50 px-[18px] py-[5px] opacity-55 focus:outline-none transition-colors"
+                      className="w-full h-full box-border rounded-full bg-background/95 text-[13px] text-foreground/90 placeholder:text-muted-foreground/50 px-[18px] py-[5px] opacity-95 sm:opacity-[0.2] focus:outline-none transition-colors"
                       aria-label="Search cases"
                     />
                   </motion.form>
