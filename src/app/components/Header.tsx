@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router";
 import { Search, Menu, X } from "lucide-react";
 import { motion, AnimatePresence, useScroll, useTransform } from "motion/react";
+import logoUrl from "../../assets/logo.png";
 
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -79,13 +80,21 @@ export function Header() {
         />
         <div className="relative max-w-[1200px] mx-auto px-6 sm:px-8 lg:px-12 py-4 sm:py-6 flex items-center justify-between">
           {/* Left: Logo + Descriptor */}
-          <Link to="/" className="flex items-baseline gap-3 group">
-            <span className="text-[15px] sm:text-[17px] tracking-tight text-foreground/95 transition-colors group-hover:text-foreground">
-              maksat.PRO
-            </span>
-            <span className="hidden sm:inline text-[13px] text-muted-foreground/70 font-light">
-              Advisory · Fund · Build
-            </span>
+          <Link to="/" className="flex items-center gap-3 group h-9">
+            <img
+              src={logoUrl}
+              alt="maksat.PRO"
+              className="h-9 w-auto object-contain"
+              loading="eager"
+            />
+            <div className="flex items-baseline gap-3 h-9">
+              <span className="text-[15px] sm:text-[17px] leading-9 tracking-tight text-foreground/95 transition-colors group-hover:text-foreground">
+                maksat.PRO
+              </span>
+              <span className="hidden sm:inline text-[13px] leading-9 text-muted-foreground/70 font-light">
+                Advisory · Fund · Build
+              </span>
+            </div>
           </Link>
 
           {/* Right: Icons */}
