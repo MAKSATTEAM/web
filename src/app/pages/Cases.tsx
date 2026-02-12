@@ -1,5 +1,6 @@
 import { motion } from "motion/react";
 import { useState } from "react";
+import { useSearchParams } from "react-router";
 import { FilterChip } from "../components/FilterChip";
 import { DiagonalShards } from "../components/DiagonalShards";
 
@@ -7,6 +8,10 @@ type FilterType = "All" | "Advisory" | "Fund" | "Build";
 
 export function Cases() {
   const [activeFilter, setActiveFilter] = useState<FilterType>("All");
+  const [searchParams] = useSearchParams();
+  const searchQuery = (searchParams.get("q") ?? "").trim();
+  const normalizedQuery = searchQuery.toLowerCase();
+  const hasQuery = normalizedQuery.length > 0;
 
   const cases = [
     {
@@ -65,9 +70,23 @@ export function Cases() {
     }
   ];
 
-  const filteredCases = activeFilter === "All" 
-    ? cases 
-    : cases.filter(c => c.category === activeFilter);
+  const filteredCases = cases.filter((caseItem) => {
+    const matchesFilter = activeFilter === "All" || caseItem.category === activeFilter;
+    if (!hasQuery) {
+      return matchesFilter;
+    }
+    const searchableText = [
+      caseItem.title,
+      caseItem.client,
+      caseItem.description,
+      caseItem.geography,
+      caseItem.category,
+      ...caseItem.metrics
+    ]
+      .join(" ")
+      .toLowerCase();
+    return matchesFilter && searchableText.includes(normalizedQuery);
+  });
 
   return (
     <div className="pt-24 sm:pt-28 lg:pt-32 pb-16 sm:pb-20 lg:pb-24 px-6 sm:px-8 lg:px-12">
@@ -107,59 +126,74 @@ export function Cases() {
         </div>
 
         {/* Cases Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
-          {filteredCases.map((caseItem, index) => (
-            <motion.div
-              key={caseItem.id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
-              className="rounded-[22px] sm:rounded-[24px] bg-gradient-to-br from-[#1a1d26]/50 via-[#12141a]/60 to-[#1a1d26]/50 border border-white/[0.06] p-6 sm:p-8 hover:border-white/[0.1] transition-all duration-500 group"
-            >
-              {/* Category Badge */}
-              <div className="flex items-center justify-between mb-6">
-                <span className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-[11px] font-light uppercase tracking-wider ${
-                  caseItem.category === 'Advisory' 
-                    ? 'bg-blue-500/10 text-blue-400/80 border border-blue-500/20'
-                    : caseItem.category === 'Fund'
-                    ? 'bg-green-500/10 text-green-400/80 border border-green-500/20'
-                    : 'bg-purple-500/10 text-purple-400/80 border border-purple-500/20'
-                }`}>
-                  <div className="w-1 h-1 rounded-full bg-current" />
-                  {caseItem.category}
-                </span>
-                <span className="text-[11px] sm:text-[12px] text-muted-foreground/50 font-light">
-                  {caseItem.geography}
-                </span>
-              </div>
-
-              {/* Title & Client */}
-              <h3 className="text-[20px] sm:text-[24px] font-light tracking-tight text-foreground/90 mb-2 group-hover:text-foreground/95 transition-colors">
-                {caseItem.title}
-              </h3>
-              <p className="text-[12px] sm:text-[13px] text-muted-foreground/60 font-light mb-4">
-                {caseItem.client}
-              </p>
-
-              {/* Description */}
-              <p className="text-[13px] sm:text-[14px] text-muted-foreground/70 font-light leading-relaxed mb-6">
-                {caseItem.description}
-              </p>
-
-              {/* Metrics */}
-              <div className="flex flex-wrap gap-2">
-                {caseItem.metrics.map((metric) => (
-                  <span 
-                    key={metric}
-                    className="px-3 py-1 rounded-full bg-white/[0.03] border border-white/[0.05] text-[11px] sm:text-[12px] text-muted-foreground/60 font-light"
-                  >
-                    {metric}
+        {filteredCases.length === 0 ? (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="rounded-[22px] sm:rounded-[24px] bg-gradient-to-br from-[#1a1d26]/50 via-[#12141a]/60 to-[#1a1d26]/50 border border-white/[0.06] p-8 sm:p-10 text-center"
+          >
+            <p className="text-[16px] sm:text-[18px] text-foreground/80 font-light">
+              No cases found
+            </p>
+            <p className="text-[12px] sm:text-[13px] text-muted-foreground/60 font-light mt-2">
+              {hasQuery ? `Try a different search term. Current query: "${searchQuery}"` : "Try adjusting the filters."}
+            </p>
+          </motion.div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+            {filteredCases.map((caseItem, index) => (
+              <motion.div
+                key={caseItem.id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+                className="rounded-[22px] sm:rounded-[24px] bg-gradient-to-br from-[#1a1d26]/50 via-[#12141a]/60 to-[#1a1d26]/50 border border-white/[0.06] p-6 sm:p-8 hover:border-white/[0.1] transition-all duration-500 group"
+              >
+                {/* Category Badge */}
+                <div className="flex items-center justify-between mb-6">
+                  <span className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-[11px] font-light uppercase tracking-wider ${
+                    caseItem.category === 'Advisory' 
+                      ? 'bg-blue-500/10 text-blue-400/80 border border-blue-500/20'
+                      : caseItem.category === 'Fund'
+                      ? 'bg-green-500/10 text-green-400/80 border border-green-500/20'
+                      : 'bg-purple-500/10 text-purple-400/80 border border-purple-500/20'
+                  }`}>
+                    <div className="w-1 h-1 rounded-full bg-current" />
+                    {caseItem.category}
                   </span>
-                ))}
-              </div>
-            </motion.div>
-          ))}
-        </div>
+                  <span className="text-[11px] sm:text-[12px] text-muted-foreground/50 font-light">
+                    {caseItem.geography}
+                  </span>
+                </div>
+
+                {/* Title & Client */}
+                <h3 className="text-[20px] sm:text-[24px] font-light tracking-tight text-foreground/90 mb-2 group-hover:text-foreground/95 transition-colors">
+                  {caseItem.title}
+                </h3>
+                <p className="text-[12px] sm:text-[13px] text-muted-foreground/60 font-light mb-4">
+                  {caseItem.client}
+                </p>
+
+                {/* Description */}
+                <p className="text-[13px] sm:text-[14px] text-muted-foreground/70 font-light leading-relaxed mb-6">
+                  {caseItem.description}
+                </p>
+
+                {/* Metrics */}
+                <div className="flex flex-wrap gap-2">
+                  {caseItem.metrics.map((metric) => (
+                    <span 
+                      key={metric}
+                      className="px-3 py-1 rounded-full bg-white/[0.03] border border-white/[0.05] text-[11px] sm:text-[12px] text-muted-foreground/60 font-light"
+                    >
+                      {metric}
+                    </span>
+                  ))}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        )}
 
         {/* Disclaimer */}
         <motion.div
